@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Todo List</h1>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+        
+        <div class="add-task-container">
+            <input type="text" id="taskInput" placeholder="Enter task...">
+            <input type="date" id="deadlineInput">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <div class="sort-container">
+            <button onclick="sortByDeadline()">Sort by Deadline ↑</button>
+        </div>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        // Handle token from URL if present
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        const expires = urlParams.get('expires');
+        
+        if (token && expires) {
+            localStorage.setItem('authToken', token);
+            localStorage.setItem('authExpires', expires);
+            window.history.replaceState({}, document.title, '/index.html');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 
