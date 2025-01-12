@@ -1,4 +1,4 @@
-const API_URL = 'https://todo-list-4c87zfhbg-yurys-projects-4d94c1a9.vercel.app';
+const API_URL = 'https://todo-app-backend-three-psi.vercel.app';
 
 let tasks = [];
 let isAscendingSort = true;
