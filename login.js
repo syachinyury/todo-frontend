@@ -15,7 +15,7 @@ function handleAuthRedirect() {
         localStorage.setItem('authToken', token);
         localStorage.setItem('authExpires', expires);
         
-        // Clean URL and redirect to index
+        // Clean URL and redirect to index using full URL
         window.history.replaceState({}, document.title, '/');
         window.location.href = `${FRONTEND_URL}/index.html`;
     }
