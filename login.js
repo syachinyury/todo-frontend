@@ -1,4 +1,5 @@
 const API_URL = 'https://todo-app-backend-three-psi.vercel.app';
+const FRONTEND_URL = 'https://todo-frontend-self-120125.vercel.app';
 
 function loginWithGoogle() {
     window.location.href = `${API_URL}/auth/google`;
@@ -16,7 +17,7 @@ function handleAuthRedirect() {
         
         // Clean URL and redirect to index
         window.history.replaceState({}, document.title, '/');
-        window.location.href = '/index.html';
+        window.location.href = `${FRONTEND_URL}/index.html`;
     }
 }
 

@@ -1,4 +1,5 @@
 const API_URL = 'https://todo-app-backend-three-psi.vercel.app';
+const FRONTEND_URL = 'https://todo-frontend-self-120125.vercel.app';
 
 let tasks = [];
 let isAscendingSort = true;
@@ -201,8 +202,8 @@ function checkAuth() {
     console.log('Current token:', token); // Debug log
     
     if (!token || expires < new Date()) {
-        console.log('Auth check failed, redirecting to login'); // Debug log
-        window.location.href = '/login.html';
+        console.log('Auth check failed, redirecting to login');
+        window.location.href = `${FRONTEND_URL}/login.html`;
         return false;
     }
     return true;
@@ -251,5 +252,5 @@ loadTasks();
 function logout() {
     localStorage.removeItem('authToken');
     localStorage.removeItem('authExpires');
-    window.location.href = '/login.html';
+    window.location.href = `${FRONTEND_URL}/login.html`;
 } 
