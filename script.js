@@ -218,7 +218,7 @@ async function loadTasks() {
 
     try {
         const token = localStorage.getItem('authToken');
-        console.log('Loading tasks with token:', token); // Debug log
+        console.log('Loading tasks with token:', token);
 
         const response = await fetch(`${API_URL}/tasks`, {
             headers: {
@@ -231,7 +231,7 @@ async function loadTasks() {
             console.error('Server error:', errorData);
             if (response.status === 401) {
                 // If unauthorized, redirect to login
-                window.location.href = '/login.html';
+                window.location.href = `${FRONTEND_URL}/login.html`;
                 return;
             }
             throw new Error(errorData.error || 'Failed to load tasks');
