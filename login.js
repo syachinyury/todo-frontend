@@ -7,6 +7,9 @@ function loginWithGoogle() {
 
 // Handle the redirect from Google OAuth
 function handleAuthRedirect() {
+    console.log('Current URL:', window.location.href);
+    console.log('Search params:', window.location.search);
+
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
     const expires = urlParams.get('expires');
@@ -14,7 +17,8 @@ function handleAuthRedirect() {
     console.log('Auth Redirect:', {
         hasToken: !!token,
         hasExpires: !!expires,
-        expires: expires
+        expires: expires,
+        rawToken: token
     });
 
     if (token && expires) {
@@ -29,6 +33,8 @@ function handleAuthRedirect() {
         // Clean URL and redirect to index using full URL
         window.history.replaceState({}, document.title, '/');
         window.location.href = `${FRONTEND_URL}/index.html`;
+    } else {
+        console.log('Missing token or expires');
     }
 }
 
