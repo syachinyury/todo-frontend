@@ -199,7 +199,12 @@ function checkAuth() {
     const token = localStorage.getItem('authToken');
     const expires = new Date(localStorage.getItem('authExpires'));
     
-    console.log('Current token:', token); // Debug log
+    console.log('Auth Check:', {
+        hasToken: !!token,
+        expires: expires,
+        currentTime: new Date(),
+        isExpired: expires < new Date()
+    });
     
     if (!token || expires < new Date()) {
         console.log('Auth check failed, redirecting to login');
@@ -230,7 +235,7 @@ async function loadTasks() {
             const errorData = await response.json();
             console.error('Server error:', errorData);
             if (response.status === 401) {
-                // If unauthorized, redirect to login
+                console.log('Unauthorized response from server');
                 window.location.href = `${FRONTEND_URL}/login.html`;
                 return;
             }

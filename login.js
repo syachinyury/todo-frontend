@@ -11,10 +11,21 @@ function handleAuthRedirect() {
     const token = urlParams.get('token');
     const expires = urlParams.get('expires');
 
+    console.log('Auth Redirect:', {
+        hasToken: !!token,
+        hasExpires: !!expires,
+        expires: expires
+    });
+
     if (token && expires) {
         localStorage.setItem('authToken', token);
         localStorage.setItem('authExpires', expires);
         
+        console.log('Stored auth data:', {
+            token: localStorage.getItem('authToken'),
+            expires: localStorage.getItem('authExpires')
+        });
+
         // Clean URL and redirect to index using full URL
         window.history.replaceState({}, document.title, '/');
         window.location.href = `${FRONTEND_URL}/index.html`;
